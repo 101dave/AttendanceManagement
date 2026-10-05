@@ -1,0 +1,26 @@
+attendance-system/
+├── .env.example
+├── .gitignore
+├── package.json
+├── server.js
+├── schema.sql
+├── controllers/
+│   ├── attendanceController.js
+│   ├── authController.js
+│   └── scoreController.js
+├── middleware/
+│   └── auth.js
+├── models/
+│   ├── attendanceModel.js
+│   ├── scoreModel.js
+│   └── userModel.js
+├── routes/
+│   ├── attendanceRoutes.js
+│   ├── authRoutes.js
+│   └── scoreRoutes.js
+└── public/
+    ├── index.html
+    ├── student.html
+    ├── teacher.html
+    ├── style.css
+    └── script.js
