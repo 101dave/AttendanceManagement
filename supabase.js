@@ -15,9 +15,4 @@
       window.location.href = 'studentDashboard.html'
     }
 
-  const { data, error } = await supabase.auth.signInWithPassword({
-  email: emailInput,
-  password: passwordInput
-})
-
 })
