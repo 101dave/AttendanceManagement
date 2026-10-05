@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teacher Portal</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/script.js" defer></script>
+  <script src="/supabase.js" type="module" defer></script>
+</head>
+<body data-page="teacher">
+  <header class="topbar">
+    <a class="brand" href="/">Attendance Portal</a>
+    <div class="actions">
+      <button class="button secondary" type="button" data-theme-toggle>Toggle theme</button>
+      <button class="button secondary hidden" type="button" data-logout>Sign out</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card login-panel">
+      <h1>Teacher login</h1>
+      <form data-login-form data-role="teacher">
+        <label>Username <input name="username" autocomplete="username" required maxlength="80"></label>
+        <label>Password <input name="password" type="password" autocomplete="current-password" required></label>
+        <button class="button" type="submit">Sign in</button>
+        <p class="message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="dashboard hidden" data-dashboard>
+      <h1>Teacher dashboard</h1>
+      <p>Signed in as <strong data-user-name></strong></p>
+
+      <section class="card">
+        <h2>Find students</h2>
+        <form class="inline-form" data-search-form>
+          <label>Name <input name="q" maxlength="80"></label>
+          <label>Section <input name="section" maxlength="80"></label>
+          <button class="button" type="submit">Search</button>
+        </form>
+        <label>Student
+          <select data-student-select required>
+            <option value="">Search and select a student</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="card">
+        <h2>Mark attendance</h2>
+        <form class="inline-form" data-attendance-form>
+          <label>Subject <input name="subject" required maxlength="100"></label>
+          <label>Activity <input name="activity" required maxlength="100"></label>
+          <label>Date <input name="date" type="date" required></label>
+          <label>Status
+            <select name="status" required>
+              <option value="present">Present</option>
+              <option value="absent">Absent</option>
+              <option value="late">Late</option>
+              <option value="excused">Excused</option>
+            </select>
+          </label>
+          <button class="button" type="submit">Save attendance</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Update score</h2>
+        <form class="inline-form" data-score-form>
+          <label>Subject <input name="subject" required maxlength="100"></label>
+          <label>Activity <input name="activity" required maxlength="100"></label>
+          <label>Score <input name="score" type="number" min="0" step="0.01" required></label>
+          <label>Maximum score <input name="maxScore" type="number" min="0.01" step="0.01" required></label>
+          <button class="button" type="submit">Save score</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Reports</h2>
+        <div class="actions">
+          <button class="button secondary" type="button" data-export="attendance">Export attendance CSV</button>
+          <button class="button secondary" type="button" data-export="scores">Export scores CSV</button>
+        </div>
+        <p class="message" role="status" aria-live="polite" data-teacher-message></p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Student</th><th>Section</th><th>Subject</th><th>Activity</th><th>Record</th><th>Date</th></tr></thead>
+            <tbody data-report-body></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+</body>
+</html>
